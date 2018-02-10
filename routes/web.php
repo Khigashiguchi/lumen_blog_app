@@ -18,7 +18,7 @@ $router->get('/', function () use ($router) {
 $router->get('hello', function () {
 	return response()->json(
 		[
-			'application_name' => 'lumen-blog-app',
+			'application_name' => 'lumen-blog-app_1',
 			'message' => 'hello world.'
 		]
 	);

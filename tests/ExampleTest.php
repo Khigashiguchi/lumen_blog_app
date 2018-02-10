@@ -2,9 +2,11 @@
 
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
+use Spatie\Snapshots\MatchesSnapshots;
 
 class ExampleTest extends TestCase
 {
+	use MatchesSnapshots;
     /**
      * A basic test example.
      *
@@ -27,14 +29,7 @@ class ExampleTest extends TestCase
 	public function testGetHello()
 	{
 		$this->get('/hello');
-		$this->assertJson(
-			json_encode(
-				[
-					'application_name' => 'lumen-blog-app',
-					'message' => 'hello world.'
-				]
-			)
-		);
+		$this->assertMatchesJsonSnapshot($this->response->getContent());
     }
 
 	/**
@@ -45,9 +40,7 @@ class ExampleTest extends TestCase
 	public function testGetUser()
 	{
 		$this->get('/user/1');
-		$this->assertEquals(
-			'User Id: 1', $this->response->getContent()
-		);
+		$this->assertMatchesSnapshot($this->response->getContent());
     }
 
 	public function testPostComment()
