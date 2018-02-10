@@ -14,3 +14,20 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->get('hello', function () {
+	return response()->json(
+		[
+			'application_name' => 'lumen-blog-app_1',
+			'message' => 'hello world.'
+		]
+	);
+});
+
+$router->get('user/{id}', function ($id) {
+	return 'User Id: '.$id;
+});
+
+$router->get('posts/{postId}/comments/{commentId}', function ($postId, $commentId) {
+	return 'Post Id: '.$postId.', Comment Id: '.$commentId;
+});
