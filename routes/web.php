@@ -16,7 +16,12 @@ $router->get('/', function () use ($router) {
 });
 
 $router->get('hello', function () {
-	return 'hello world';
+	return response()->json(
+		[
+			'application_name' => 'lumen-blog-app',
+			'message' => 'hello world.'
+		]
+	);
 });
 
 $router->get('user/{id}', function ($id) {

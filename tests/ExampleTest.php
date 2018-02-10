@@ -27,8 +27,13 @@ class ExampleTest extends TestCase
 	public function testGetHello()
 	{
 		$this->get('/hello');
-		$this->assertEquals(
-			'hello world', $this->response->getContent()
+		$this->assertJson(
+			json_encode(
+				[
+					'application_name' => 'lumen-blog-app',
+					'message' => 'hello world.'
+				]
+			)
 		);
     }
 
