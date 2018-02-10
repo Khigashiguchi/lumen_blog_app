@@ -18,4 +18,12 @@ class ExampleTest extends TestCase
             $this->app->version(), $this->response->getContent()
         );
     }
+
+	public function testGetHello()
+	{
+		$this->get('/hello');
+		$this->assertEquals(
+			'hello world', $this->response->getContent()
+		);
+    }
 }
